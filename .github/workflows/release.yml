@@ -38,5 +38,5 @@ jobs:
         with:
           cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
           cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
-          cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-          buildDirectory: '${{ github.workspace }}/build'
+          cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
+          buildDirectory: '${{ github.workspace }}\build'
