@@ -22,6 +22,7 @@ jobs:
           setup-python: 'false'
           arch: 'win64_mingw81'
           version: '6.1.0'
+          tools: 'tools_openssl'
       - name: 'Run CMake'
         uses: lukka/run-cmake@v3
         with:
@@ -29,7 +30,7 @@ jobs:
           cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
           cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
           buildDirectory: '${{ github.workspace }}\build'
-      - name: dothings
+      - name: Move G++
         run:  get-command g++.exe | % { copy-item -Path $_.Path -Destination D:\a\hydownloader-systray\Qt\6.1.0\mingw81_64\bin}
       -
         name: windeployqt
