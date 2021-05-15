@@ -31,7 +31,7 @@ jobs:
           cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
           buildDirectory: '${{ github.workspace }}\build'
       -
-        name: windeployqt + libraries
+        name: windeployqt & libraries
         run: |
           mkdir '${{ github.workspace }}\release'
           move '${{ github.workspace }}\build\hydownloader-systray.exe' '${{ github.workspace }}\release'
