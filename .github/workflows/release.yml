@@ -13,6 +13,12 @@ jobs:
       - 
         uses: lukka/get-cmake@latest
       - 
+        name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          architecture: x64
+      - 
         name: Cache Qt
         id: cache_qt
         uses: actions/cache@v1
@@ -25,7 +31,7 @@ jobs:
         with:
           install-deps: true
           setup-python: 'false'
-          version: '6.1'
+          version: '6.2.0'
           cached: ${{ steps.cache_qt.outputs.cache-hit }}
       - name: 'Run CMake'
         uses: lukka/run-cmake@v3
