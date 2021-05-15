@@ -22,11 +22,17 @@ jobs:
           setup-python: 'false'
           version: '6.1.0'
           cached: ${{ steps.cache_qt.outputs.cache-hit }}
-      - name: 'Run CMake'
-        uses: lukka/run-cmake@v3
-        with:
-          cmakeGenerator: 'Ninja'
-          cmakeListsOrSettingsJson: CMakeListsTxtBasic
-          cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
-          cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
-          buildDirectory: '${{ github.workspace }}\build'
+       - 
+         name: wahtever
+         run: |
+            c++.exe -v
+            qmake.exe -v
+            cmake.exe -v
+#      - name: 'Run CMake'
+#        uses: lukka/run-cmake@v3
+#        with:
+#          cmakeGenerator: 'Ninja'
+#          cmakeListsOrSettingsJson: CMakeListsTxtBasic
+ #         cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
+#          cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
+#          buildDirectory: '${{ github.workspace }}\build'
