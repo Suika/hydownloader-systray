@@ -23,18 +23,15 @@ jobs:
           arch: 'win64_mingw81'
           version: '6.1.0'
           tools: 'tools_openssl_x64'
-      - name: 'Run CMake'
+      - name: 'Build CMake'
         uses: lukka/run-cmake@v3
         with:
           cmakeListsOrSettingsJson: CMakeListsTxtBasic
           cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
           cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
           buildDirectory: '${{ github.workspace }}\build'
-      #- name: Move G++
-      #  run: |
-      #    get-command g++.exe | % { copy-item -Path $_.Path -Destination D:\a\hydownloader-systray\Qt\6.1.0\mingw81_64\bin}
       -
-        name: windeployqt
+        name: windeployqt + libraries
         run: |
           mkdir '${{ github.workspace }}\release'
           move '${{ github.workspace }}\build\hydownloader-systray.exe' '${{ github.workspace }}\release'
@@ -52,3 +49,18 @@ jobs:
           path: '${{ github.workspace }}\release'
           if-no-files-found: error
           retention-days: 2
+      - 
+        uses: papeloto/action-zip@v1
+        with:
+          files: '${{ github.workspace }}\release'
+          dest: hydownloader-systray.zip
+      - 
+        name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: hydownloader-systray.zip
+          asset_name: hydownloader-systray.zip
+          tag: "dev"
+          overwrite: true
+          body: "Latest build of hydownloader-systray"
