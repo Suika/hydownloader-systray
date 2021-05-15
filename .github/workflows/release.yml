@@ -22,8 +22,6 @@ jobs:
           setup-python: 'false'
           arch: 'win64_mingw81'
           version: '6.1.0'
-      - name: setpath
-        run: Get-ChildItem Env:Path | fl
       - name: 'Run CMake'
         uses: lukka/run-cmake@v3
         with:
@@ -31,6 +29,8 @@ jobs:
           cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
           cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
           buildDirectory: '${{ github.workspace }}\build'
+      - name: setpath
+        run: Get-ChildItem Env:Path | fl
       -
         name: windeployqt
         run: |
