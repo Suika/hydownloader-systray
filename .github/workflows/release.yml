@@ -50,10 +50,12 @@ jobs:
           if-no-files-found: error
           retention-days: 2
       - 
-        uses: papeloto/action-zip@v1
+        name: Archive Release
+        uses: thedoctor0/zip-release@master
         with:
-          files: '${{ github.workspace }}\release'
-          dest: hydownloader-systray.zip
+          path: '${{ github.workspace }}\release'
+          filename: 'hydownloader-systray.zip'
+          type: 'zip'
       - 
         name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
