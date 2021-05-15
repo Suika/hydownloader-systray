@@ -30,16 +30,16 @@ jobs:
           cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
           cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
           buildDirectory: '${{ github.workspace }}\build'
-      - name: Move G++
-        run: |
-          get-command g++.exe | % { copy-item -Path $_.Path -Destination D:\a\hydownloader-systray\Qt\6.1.0\mingw81_64\bin}
+      #- name: Move G++
+      #  run: |
+      #    get-command g++.exe | % { copy-item -Path $_.Path -Destination D:\a\hydownloader-systray\Qt\6.1.0\mingw81_64\bin}
       -
         name: windeployqt
         run: |
           mkdir '${{ github.workspace }}\release'
           move '${{ github.workspace }}\build\hydownloader-systray.exe' '${{ github.workspace }}\release'
           get-command libgcc_s_seh-1.dll | % { copy-item -Path $_.Path -Destination '${{ github.workspace }}\release'}
-          get-command libstdc++-6.dlll | % { copy-item -Path $_.Path -Destination '${{ github.workspace }}\release'}
+          get-command libstdc++-6.dll | % { copy-item -Path $_.Path -Destination '${{ github.workspace }}\release'}
           get-command libwinpthread-1.dll | % { copy-item -Path $_.Path -Destination '${{ github.workspace }}\release'}
           get-command libcrypto-1_1-x64.dll | % { copy-item -Path $_.Path -Destination '${{ github.workspace }}\release'}
           get-command libssl-1_1-x64.dll | % { copy-item -Path $_.Path -Destination '${{ github.workspace }}\release'}
