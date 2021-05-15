@@ -49,13 +49,10 @@ jobs:
           path: '${{ github.workspace }}\release'
           if-no-files-found: error
           retention-days: 2
-      - 
-        name: Archive Release
-        uses: thedoctor0/zip-release@master
-        with:
-          path: '${{ github.workspace }}\release'
-          filename: 'hydownloader-systray.zip'
-          type: 'zip'
+      -
+        name: Generate Zip
+        run: |
+          7z a -tzip hydownloader-systray.zip '${{ github.workspace }}\release'
       - 
         name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
