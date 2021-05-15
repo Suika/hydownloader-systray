@@ -23,7 +23,7 @@ jobs:
           arch: 'win64_mingw81'
           version: '6.1.0'
       - name: setpath
-        run: set path %Qt6_DIR%;%PATH%
+        run: set path %Qt6_DIR%;%path%
       - name: 'Run CMake'
         uses: lukka/run-cmake@v3
         with:
