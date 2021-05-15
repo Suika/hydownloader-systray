@@ -27,6 +27,7 @@ jobs:
         with:
           install-deps: true
           setup-python: 'false'
+          arch: 'win64_mingw81'
           version: '6.1.0'
           cached: ${{ steps.cache_qt.outputs.cache-hit }}
       - 
