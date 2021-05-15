@@ -29,7 +29,7 @@ jobs:
         with:
           install-deps: true
           setup-python: 'false'
-          version: '6.2.0'
+          version: '6.1.0'
           cached: ${{ steps.cache_qt.outputs.cache-hit }}
       - name: 'Run CMake'
         uses: lukka/run-cmake@v3
