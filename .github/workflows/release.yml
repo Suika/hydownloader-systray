@@ -22,7 +22,7 @@ jobs:
           setup-python: 'false'
           arch: 'win64_mingw81'
           version: '6.1.0'
-          tools: 'tools_openssl'
+          tools: 'tools_openssl_x64'
       - name: 'Run CMake'
         uses: lukka/run-cmake@v3
         with:
