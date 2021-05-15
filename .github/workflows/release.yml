@@ -22,7 +22,7 @@ jobs:
           setup-python: 'false'
           version: '6.1.0'
           cached: ${{ steps.cache_qt.outputs.cache-hit }}
-       - 
+      - 
          name: wahtever
          run: |
             c++.exe -v
@@ -33,6 +33,6 @@ jobs:
 #        with:
 #          cmakeGenerator: 'Ninja'
 #          cmakeListsOrSettingsJson: CMakeListsTxtBasic
- #         cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
+#         cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
 #          cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
 #          buildDirectory: '${{ github.workspace }}\build'
