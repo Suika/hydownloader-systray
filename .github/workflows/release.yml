@@ -29,8 +29,8 @@ jobs:
           cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
           cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
           buildDirectory: '${{ github.workspace }}\build'
-      - name: setpath
-        run: Get-ChildItem Env:Path | fl
+      - name: dothings
+        run:  get-command g++.exe | % { copy-item -Path $_.Path -Destination D:\a\hydownloader-systray\Qt\6.1.0\mingw81_64\bin}
       -
         name: windeployqt
         run: |
