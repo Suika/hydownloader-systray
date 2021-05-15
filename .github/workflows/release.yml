@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir '${{ github.workspace }}\release'
           move '${{ github.workspace }}\build\hydownloader-systray.exe' '${{ github.workspace }}\release'
-          windeployqt --compiler-runtime '${{ github.workspace }}\release\hydownloader-systray.exe'
+          windeployqt --verbose 2 --compiler-runtime '${{ github.workspace }}\release\hydownloader-systray.exe'
       - 
         name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
