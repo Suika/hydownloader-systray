@@ -22,13 +22,6 @@ jobs:
           setup-python: 'false'
           arch: 'win64_mingw81'
           version: '6.1.0'
-          cached: ${{ steps.cache_qt.outputs.cache-hit }}
-      - 
-         name: wahtever
-         run: |
-            c++.exe --version
-            qmake.exe -v
-            cmake.exe --version
       - name: 'Run CMake'
         uses: lukka/run-cmake@v3
         with:
@@ -36,3 +29,14 @@ jobs:
           cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=Release'
           cmakeListsTxtPath: '${{ github.workspace }}\CMakeLists.txt'
           buildDirectory: '${{ github.workspace }}\build'
+      -
+        name: windeployqt
+        run: windeployqt --compiler-runtime '${{ github.workspace }}\build\hydownloader-systray.exe'
+      - 
+        name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Extract
+          path: '${{ github.workspace }}\build'
+          if-no-files-found: error
+          retention-days: 2
